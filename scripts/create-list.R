@@ -1,8 +1,8 @@
-##################### 
-#                   #
-#      Lists        #
-#                   #
-#####################
+            ##################### 
+            #                   #
+            #      Lists        #
+            #                   #
+            #####################
 # Note that the function arguments used in this sample script are rather verbose
 # just to enhance your understanding. You DO NOT always need to specify arguments.
 
@@ -36,14 +36,18 @@ Circle <- function(r) {
 table_def <- table
 
 # Download a CSV file from the web and use to create a data frame in R
-download.file(url = "https://download.microsoft.com/download/4/C/8/4C830C0C-101F-4BF2-8FCB-32D9A8BA906A/Import_User_Sample_en.csv",
-              destfile = "microsoft_sample.csv",
-              mode = "w")   # download sample file from Microsoft website                     
-DF <- read.csv(file = "microsoft_sample.csv") # data frane from dowloaded file
+# If you don't understand what tryCatch is doing, don't bother. It's not that important for now.
+tryCatch({
+  download.file(url = "https://download.microsoft.com/download/4/C/8/4C830C0C-101F-4BF2-8FCB-32D9A8BA906A/Import_User_Sample_en.csv",
+                destfile = "microsoft_sample.csv",
+                mode = "w")   # download sample file from Microsoft website
+  DF <-
+    read.csv(file = "microsoft_sample.csv") # data frame from downloaded file
+}, error = function(e) DF <- "No internet connection")
 
-hex <- charToRaw("National Environmental Standards and Regulations Enforcement Agency")
+hex <- charToRaw("National Academy of Science")
 
-NESREA_in_bits <- rawToBits(hex)
+obj_in_bits <- rawToBits(hex)
 
 # Now compile all these into a list
 mumbo_jumbo <- list(num_vec,
@@ -55,7 +59,7 @@ mumbo_jumbo <- list(num_vec,
                     table_def,
                     DF,
                     hex,
-                    NESREA_in_bits)
+                    obj_in_bits)
 mumbo_jumbo     # display the entire list in the console (if you can!)
 
 str(mumbo_jumbo)
@@ -65,7 +69,7 @@ typeof(mumbo_jumbo)
 
 
 # Emphasize the existence of lists of lists i.e. nested lists
-lister <- list(list(list(list(1)))) # Source: http://adv-r.had.co.nz/Data-structures.html
+lister <- list(list(list(list(1)))) # http://adv-r.had.co.nz/Data-structures.html
 lister
 str(lister)
 typeof(lister)
