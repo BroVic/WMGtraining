@@ -1,6 +1,6 @@
-# create vector
+# Create vectors
 
-# Run the script and study the outputs carefully to understand what's going on
+# Run the script and study the output carefully to understand what's going on
 # Ex. 1: Make a vector and examine it
 prac <- "Use typeof() to check what type of vector this is"
 prac
@@ -80,6 +80,5 @@ prac
 length(prac)
 identical(prac, prac_short1) 
 # How would you solve this tricky condition i.e. make these 2 objects (vectors)
-# to be exactly the same? Push your solution to your forked repository and
-# create pull request.
+# to be exactly the same? 
 ## END.
